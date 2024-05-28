@@ -1,0 +1,17 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Articles</h1>
+  <%= link_to 'New Article', new_article_path, class: 'btn btn-primary mb-3' %>
+  <div class="list-group">
+    <% @articles.each do |article| %>
+      <div class="list-group-item">
+        <h5 class="mb-1"><%= article.title %></h5>
+        <p class="mb-1"><%= truncate(article.content, length: 150) %></p>
+        <div class="d-flex justify-content-between align-items-center">
+          <%= link_to 'Show', article_path(article), class: 'btn btn-info btn-sm' %>
+          <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-warning btn-sm' %>
+          <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
